@@ -10,6 +10,8 @@ class VenueResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :cuisine
+
   has_many   :best_dishes
 
   has_many   :bookmarks
