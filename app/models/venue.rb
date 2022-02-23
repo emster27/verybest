@@ -1,6 +1,9 @@
 class Venue < ApplicationRecord
   # Direct associations
 
+  has_many   :best_dishes,
+             :dependent => :destroy
+
   has_many   :bookmarks,
              :dependent => :destroy
 
