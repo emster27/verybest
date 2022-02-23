@@ -4,10 +4,10 @@ class Venue < ApplicationRecord
   belongs_to :cuisine
 
   has_many   :best_dishes,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :bookmarks,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -20,5 +20,4 @@ class Venue < ApplicationRecord
   def to_s
     state
   end
-
 end

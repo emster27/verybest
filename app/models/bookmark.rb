@@ -2,7 +2,7 @@ class Bookmark < ApplicationRecord
   # Direct associations
 
   belongs_to :dish,
-             :class_name => "BestDish"
+             class_name: "BestDish"
 
   belongs_to :venue
 
@@ -11,8 +11,8 @@ class Bookmark < ApplicationRecord
   # Indirect associations
 
   has_one    :food_type,
-             :through => :venue,
-             :source => :cuisine
+             through: :venue,
+             source: :cuisine
 
   # Validations
 
@@ -21,5 +21,4 @@ class Bookmark < ApplicationRecord
   def to_s
     user.to_s
   end
-
 end

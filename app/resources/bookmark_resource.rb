@@ -23,7 +23,7 @@ class BookmarkResource < ApplicationResource
 
   filter :cuisine_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:food_type).where(:venues => {:cuisine_id => value})
+      scope.eager_load(:food_type).where(venues: { cuisine_id: value })
     end
   end
 end

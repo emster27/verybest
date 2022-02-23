@@ -1,10 +1,11 @@
 class BestDishesController < ApplicationController
-  before_action :set_best_dish, only: [:show, :edit, :update, :destroy]
+  before_action :set_best_dish, only: %i[show edit update destroy]
 
   # GET /best_dishes
   def index
     @q = BestDish.ransack(params[:q])
-    @best_dishes = @q.result(:distinct => true).includes(:venue, :bookmarks, :cuisine).page(params[:page]).per(10)
+    @best_dishes = @q.result(distinct: true).includes(:venue, :bookmarks,
+                                                      :cuisine).page(params[:page]).per(10)
   end
 
   # GET /best_dishes/1
@@ -18,17 +19,16 @@ class BestDishesController < ApplicationController
   end
 
   # GET /best_dishes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /best_dishes
   def create
     @best_dish = BestDish.new(best_dish_params)
 
     if @best_dish.save
-      message = 'BestDish was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "BestDish was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @best_dish, notice: message
       end
@@ -40,7 +40,7 @@ class BestDishesController < ApplicationController
   # PATCH/PUT /best_dishes/1
   def update
     if @best_dish.update(best_dish_params)
-      redirect_to @best_dish, notice: 'Best dish was successfully updated.'
+      redirect_to @best_dish, notice: "Best dish was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class BestDishesController < ApplicationController
   def destroy
     @best_dish.destroy
     message = "BestDish was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to best_dishes_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_best_dish
-      @best_dish = BestDish.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def best_dish_params
-      params.require(:best_dish).permit(:user_id, :venue_id, :bookmark_count)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_best_dish
+    @best_dish = BestDish.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def best_dish_params
+    params.require(:best_dish).permit(:user_id, :venue_id, :bookmark_count)
+  end
 end

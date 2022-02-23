@@ -7,7 +7,7 @@ class CuisineResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :venues
+  has_many :venues
 
   # Indirect associations
 
@@ -26,5 +26,4 @@ class CuisineResource < ApplicationResource
       end
     end
   end
-
 end

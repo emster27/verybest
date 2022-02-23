@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe BestDishResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'best_dishes',
-          attributes: { }
-        }
+          type: "best_dishes",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe BestDishResource, type: :resource do
       BestDishResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { BestDish.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { BestDish.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:best_dish) { create(:best_dish) }
 
     let(:payload) do
       {
         data: {
           id: best_dish.id.to_s,
-          type: 'best_dishes',
-          attributes: { } # Todo!
-        }
+          type: "best_dishes",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe BestDishResource, type: :resource do
       BestDishResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { best_dish.reload.updated_at }
+      end.to change { best_dish.reload.updated_at }
       # .and change { best_dish.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:best_dish) { create(:best_dish) }
 
     let(:instance) do
       BestDishResource.find(id: best_dish.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { BestDish.count }.by(-1)
+      end.to change { BestDish.count }.by(-1)
     end
   end
 end

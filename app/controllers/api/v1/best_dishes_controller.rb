@@ -13,7 +13,7 @@ class Api::V1::BestDishesController < Api::V1::GraphitiController
     best_dish = BestDishResource.build(params)
 
     if best_dish.save
-      render jsonapi: best_dish, status: 201
+      render jsonapi: best_dish, status: :created
     else
       render jsonapi_errors: best_dish
     end
@@ -33,7 +33,7 @@ class Api::V1::BestDishesController < Api::V1::GraphitiController
     best_dish = BestDishResource.find(params)
 
     if best_dish.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: best_dish
     end

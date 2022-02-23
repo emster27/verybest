@@ -1,22 +1,16 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe BestDish, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:bookmarks) }
 
     it { should belong_to(:venue) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_one(:cuisine) }
+  end
 
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end
