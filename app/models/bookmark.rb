@@ -10,6 +10,10 @@ class Bookmark < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :food_type,
+             :through => :venue,
+             :source => :cuisine
+
   # Validations
 
   # Scopes

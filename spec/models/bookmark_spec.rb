@@ -14,6 +14,8 @@ RSpec.describe Bookmark, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:food_type) }
+
     end
 
     describe "Validations" do

@@ -6,6 +6,10 @@ class Cuisine < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :bookmarks,
+             :through => :venues,
+             :source => :bookmarks
+
   # Validations
 
   # Scopes
