@@ -8,6 +8,8 @@ class BestDishResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :venue
+
   # Indirect associations
 
 end
