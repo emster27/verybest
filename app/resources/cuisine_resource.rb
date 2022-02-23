@@ -11,6 +11,14 @@ class CuisineResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :best_dishes do
+    assign_each do |cuisine, best_dishes|
+      best_dishes.select do |b|
+        b.id.in?(cuisine.best_dishes.map(&:id))
+      end
+    end
+  end
+
   has_many :bookmarks do
     assign_each do |cuisine, bookmarks|
       bookmarks.select do |b|
