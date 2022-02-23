@@ -11,4 +11,12 @@ class CuisineResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :bookmarks do
+    assign_each do |cuisine, bookmarks|
+      bookmarks.select do |b|
+        b.id.in?(cuisine.bookmarks.map(&:id))
+      end
+    end
+  end
+
 end
