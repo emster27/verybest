@@ -8,6 +8,9 @@ class BestDishResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :bookmarks,
+             foreign_key: :dish_id
+
   belongs_to :venue
 
   # Indirect associations
