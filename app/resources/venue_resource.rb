@@ -10,6 +10,8 @@ class VenueResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :user
+
   # Indirect associations
 
 end
