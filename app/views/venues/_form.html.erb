@@ -1,7 +1,6 @@
 <% was_validated = venue.errors.any? %>
 
 <%= form_with(model: venue, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for state start -->
   <div class="form-group">
     <% state_class = "form-control" %>
     <% state_was_invalid = venue.errors.include?(:state) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :state %>
-    <!-- Input for state start -->
     <%= f.text_field :state, class: state_class, placeholder: "Enter state" %>
-    <!-- Input for state end -->
     <% if state_was_invalid %>
       <% venue.errors.full_messages_for(:state).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for state end -->
-  <!-- Label and input for city start -->
   <div class="form-group">
     <% city_class = "form-control" %>
     <% city_was_invalid = venue.errors.include?(:city) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :city %>
-    <!-- Input for city start -->
     <%= f.text_field :city, class: city_class, placeholder: "Enter city" %>
-    <!-- Input for city end -->
     <% if city_was_invalid %>
       <% venue.errors.full_messages_for(:city).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for city end -->
-  <!-- Label and input for neighborhood start -->
   <div class="form-group">
     <% neighborhood_class = "form-control" %>
     <% neighborhood_was_invalid = venue.errors.include?(:neighborhood) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :neighborhood %>
-    <!-- Input for neighborhood start -->
     <%= f.text_field :neighborhood, class: neighborhood_class, placeholder: "Enter neighborhood" %>
-    <!-- Input for neighborhood end -->
     <% if neighborhood_was_invalid %>
       <% venue.errors.full_messages_for(:neighborhood).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for neighborhood end -->
-  <!-- Label and input for cuisine_id start -->
   <div class="form-group">
     <% cuisine_class = "form-control" %>
     <% cuisine_was_invalid = venue.errors.include?(:cuisine) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :cuisine_id %>
-    <!-- Input for cuisine_id start -->
     <%= f.collection_select :cuisine_id, Cuisine.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for cuisine_id end -->
     <% if cuisine_was_invalid %>
       <% venue.errors.full_messages_for(:cuisine).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for cuisine_id end -->
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <% user_class = "form-control" %>
     <% user_was_invalid = venue.errors.include?(:user) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :user_id %>
-    <!-- Input for user_id start -->
     <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for user_id end -->
     <% if user_was_invalid %>
       <% venue.errors.full_messages_for(:user).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for user_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

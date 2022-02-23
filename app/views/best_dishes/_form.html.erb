@@ -1,7 +1,6 @@
 <% was_validated = best_dish.errors.any? %>
 
 <%= form_with(model: best_dish, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <% user_class = "form-control" %>
     <% user_was_invalid = best_dish.errors.include?(:user) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :user_id %>
-    <!-- Input for user_id start -->
     <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
-    <!-- Input for user_id end -->
     <% if user_was_invalid %>
       <% best_dish.errors.full_messages_for(:user).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for user_id end -->
-  <!-- Label and input for venue_id start -->
   <div class="form-group">
     <% venue_class = "form-control" %>
     <% venue_was_invalid = best_dish.errors.include?(:venue) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :venue_id %>
-    <!-- Input for venue_id start -->
     <%= f.collection_select :venue_id, Venue.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for venue_id end -->
     <% if venue_was_invalid %>
       <% best_dish.errors.full_messages_for(:venue).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for venue_id end -->
-  <!-- Label and input for bookmark_count start -->
   <div class="form-group">
     <% bookmark_count_class = "form-control" %>
     <% bookmark_count_was_invalid = best_dish.errors.include?(:bookmark_count) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :bookmark_count %>
-    <!-- Input for bookmark_count start -->
     <%= f.number_field :bookmark_count, class: bookmark_count_class, placeholder: "Enter bookmark count" %>
-    <!-- Input for bookmark_count end -->
     <% if bookmark_count_was_invalid %>
       <% best_dish.errors.full_messages_for(:bookmark_count).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for bookmark_count end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

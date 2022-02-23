@@ -1,7 +1,6 @@
 <% was_validated = cuisine.errors.any? %>
 
 <%= form_with(model: cuisine, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for venue_id start -->
   <div class="form-group">
     <% venue_class = "form-control" %>
     <% venue_was_invalid = cuisine.errors.include?(:venue) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :venue_id %>
-    <!-- Input for venue_id start -->
     <%= f.number_field :venue_id, class: venue_class, placeholder: "Enter venue" %>
-    <!-- Input for venue_id end -->
     <% if venue_was_invalid %>
       <% cuisine.errors.full_messages_for(:venue).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for venue_id end -->
-  <!-- Label and input for dish_id start -->
   <div class="form-group">
     <% dish_class = "form-control" %>
     <% dish_was_invalid = cuisine.errors.include?(:dish) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :dish_id %>
-    <!-- Input for dish_id start -->
     <%= f.number_field :dish_id, class: dish_class, placeholder: "Enter dish" %>
-    <!-- Input for dish_id end -->
     <% if dish_was_invalid %>
       <% cuisine.errors.full_messages_for(:dish).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for dish_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

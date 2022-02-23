@@ -6,37 +6,27 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>State</dt>
-      <!-- Display state start -->
       <dd><%= venue.state %></dd>
-      <!-- Display state end -->
 
       <dt>City</dt>
-      <!-- Display city start -->
       <dd><%= venue.city %></dd>
-      <!-- Display city end -->
 
       <dt>Neighborhood</dt>
-      <!-- Display neighborhood start -->
       <dd><%= venue.neighborhood %></dd>
-      <!-- Display neighborhood end -->
 
       <dt>Cuisine</dt>
-      <!-- Display cuisine_id start -->
       <dd>
         <% if @venue.cuisine.present? %>
           <%= link_to venue.cuisine, venue.cuisine %>
         <% end %>
       </dd>
-      <!-- Display cuisine_id end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @venue.user.present? %>
           <%= link_to venue.user, venue.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -45,21 +35,17 @@
         <%= link_to_show_or_back venue, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link venue start -->
       <div class="col">
         <%= link_to edit_venue_url(venue), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link venue end -->
 
-      <!-- Delete link venue start -->
       <div class="col">
         <%= link_to venue, method: :delete, data: { confirm: "Do you really want to delete this venue?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link venue end -->
     </div>
   </div>
 

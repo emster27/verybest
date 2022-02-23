@@ -6,23 +6,17 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd><%= best_dish.user_id %></dd>
-      <!-- Display user_id end -->
 
       <dt>Venue</dt>
-      <!-- Display venue_id start -->
       <dd>
         <% if @best_dish.venue.present? %>
           <%= link_to best_dish.venue, best_dish.venue %>
         <% end %>
       </dd>
-      <!-- Display venue_id end -->
 
       <dt>Bookmark count</dt>
-      <!-- Display bookmark_count start -->
       <dd><%= best_dish.bookmark_count %></dd>
-      <!-- Display bookmark_count end -->
 
     </dl>
 
@@ -31,21 +25,17 @@
         <%= link_to_show_or_back best_dish, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link best_dish start -->
       <div class="col">
         <%= link_to edit_best_dish_url(best_dish), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link best_dish end -->
 
-      <!-- Delete link best_dish start -->
       <div class="col">
         <%= link_to best_dish, method: :delete, data: { confirm: "Do you really want to delete this best_dish?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link best_dish end -->
     </div>
   </div>
 

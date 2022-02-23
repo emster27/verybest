@@ -1,32 +1,18 @@
-<!-- Form best_dish start -->
 <%= form_with(model: @best_dish, local: true) do |f| %>
-<!-- Form best_dish end -->
 
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <%= f.label :user_id %>
 
-    <!-- Input for user_id start -->
     <%= f.text_field :user_id, class: "form-control" %>
-    <!-- Input for user_id end -->
   </div>
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for venue_id start -->
-  <!-- Input for venue_id start -->
   <%= f.hidden_field :venue_id, value: @venue.id %>
-  <!-- Input for venue_id end -->
-  <!-- Label and input for venue_id end -->
 
-  <!-- Label and input for bookmark_count start -->
   <div class="form-group">
     <%= f.label :bookmark_count %>
 
-    <!-- Input for bookmark_count start -->
     <%= f.text_field :bookmark_count, class: "form-control" %>
-    <!-- Input for bookmark_count end -->
   </div>
-  <!-- Label and input for bookmark_count end -->
 
   <%= f.submit "Create best dish", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

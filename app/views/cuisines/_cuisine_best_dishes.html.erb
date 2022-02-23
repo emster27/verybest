@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @cuisine.best_dishes.each do |best_dish| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/best_dishes/<%= best_dish.id %>">
           <%= best_dish %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>
