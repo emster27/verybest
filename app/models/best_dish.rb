@@ -9,6 +9,10 @@ class BestDish < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :cuisine,
+             :through => :venue,
+             :source => :cuisine
+
   # Validations
 
   # Scopes

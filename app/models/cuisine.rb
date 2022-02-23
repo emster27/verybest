@@ -6,6 +6,10 @@ class Cuisine < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :best_dishes,
+             :through => :venues,
+             :source => :best_dishes
+
   has_many   :bookmarks,
              :through => :venues,
              :source => :bookmarks
