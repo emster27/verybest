@@ -3,7 +3,7 @@ class BestDishesController < ApplicationController
 
   # GET /best_dishes
   def index
-    @best_dishes = BestDish.all
+    @best_dishes = BestDish.page(params[:page]).per(10)
   end
 
   # GET /best_dishes/1
