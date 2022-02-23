@@ -22,12 +22,20 @@
 
       <dt>Cuisine</dt>
       <!-- Display cuisine_id start -->
-      <dd><%= venue.cuisine_id %></dd>
+      <dd>
+        <% if @venue.cuisine.present? %>
+          <%= link_to venue.cuisine, venue.cuisine %>
+        <% end %>
+      </dd>
       <!-- Display cuisine_id end -->
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= venue.user_id %></dd>
+      <dd>
+        <% if @venue.user.present? %>
+          <%= link_to venue.user, venue.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
     </dl>
