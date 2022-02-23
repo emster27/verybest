@@ -8,6 +8,7 @@ class BestDishesController < ApplicationController
 
   # GET /best_dishes/1
   def show
+    @bookmark = Bookmark.new
   end
 
   # GET /best_dishes/new
@@ -24,7 +25,12 @@ class BestDishesController < ApplicationController
     @best_dish = BestDish.new(best_dish_params)
 
     if @best_dish.save
-      redirect_to @best_dish, notice: 'Best dish was successfully created.'
+      message = 'BestDish was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @best_dish, notice: message
+      end
     else
       render :new
     end

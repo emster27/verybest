@@ -8,6 +8,7 @@ class CuisinesController < ApplicationController
 
   # GET /cuisines/1
   def show
+    @venue = Venue.new
   end
 
   # GET /cuisines/new
